@@ -21,7 +21,9 @@
     .HeaderFilter(f => f.Visible(true))
     .GroupPanel(p => p.Visible(true))
     .Grouping(g => g.AutoExpandAll(false))
+    .AllowColumnResizing(true)
     .RemoteOperations(true)
+    .Selection(s => s.Mode(SelectionMode.Multiple))
     .Summary(s => s
         .TotalItems(totalItems => {
             totalItems.AddFor(m => m.ShipCity).SummaryType(SummaryType.Count);
@@ -30,4 +32,10 @@
             groupItems.Add().SummaryType(SummaryType.Count);
         })
     )
+    .Editing(editing =>
+    {
+        editing.AllowAdding(true);
+        editing.AllowDeleting(true);
+        editing.AllowUpdating(true);
+    })
 )
